@@ -1,0 +1,26 @@
+<p>register-user works!</p>
+firstName,
+MiddleName,
+lstName,
+emailid,
+mobileNo,
+password
+<form  [formGroup]="registerForm" class="d-flex flex-column col-4 " (ngSubmit)="onSubmit()"  [class]="formwrapper" >
+    <label for="FirstName">Enter First Name</label>
+    <input type="text" formControlName="firstName"><br>
+    <label for="MiddleName">Enter Middel Name</label>
+
+    <input type="text" formControlName="MiddleName"><br>
+    <label for="lstName">Enter last Name</label>
+    <input type="text" formControlName="lstName"><br>
+    <label for="emailid">Enter Email ID</label>
+    <input type="email" formControlName="emailid" name="" id=""><br>
+
+    <label for="mobileno">Enter Mobile No</label>
+    <input type="text" formControlName="mobileNo"><br>
+    <label for="password">Enter password</label>
+    <input type="text" formControlName="password"><br>
+    <button type="submit">
+        Register User
+    </button>
+</form>

@@ -1,0 +1,54 @@
+
+
+<div *ngIf="istableView; else cardview"   class="table-view" #tableView>
+  <div class="d-flex align-items-end flex-column">
+  <button  (click)="gridView()">card View</button>
+</div>
+<table class="table table-striped">
+    <tr   >
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Middle Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Date of Joining</th>
+    </tr>
+    <tr *ngFor="let employee of empoloyees">
+      <td scope="row" >{{employee.employeeid}}</td>
+     
+     <td >{{employee.employee_fnam}}</td>
+     <td >{{employee.employee_mname}}</td>
+      <td >{{employee.employee_lname}}</td>
+      <td >{{employee.employee_lname}}</td> 
+      <td >{{employee.email}}</td>
+      <td >{{employee.designation}}</td>
+      <td >{{employee.emp_joining_date|date}}</td>
+     
+
+    </tr>
+
+      
+     
+   
+    <tr>
+    
+      </tr>
+  </table>
+</div>
+
+<ng-template #cardview>
+  <div class="d-flex align-items-end flex-column">
+  <button (click)="tableView()">Table  View</button>
+  </div>
+  <div class="card" style="width: 18rem;" *ngFor="let employee of empoloyees">
+    <img class="card-img-top" src="../../../../assets/employee.jpg" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">{{employee.employee_fnam}} {{employee.employee_mname}} {{employee.employee_lname}} </p>
+      <p class="card-text">{{employee.designation}}</p>
+      <p class="card-text">{{employee.email}}</p>
+      <p class="card-text">Joining Date : {{employee.emp_joining_date|date}}</p>
+    </div>
+  </div>
+</ng-template>
