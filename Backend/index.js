@@ -44,9 +44,20 @@ app.listen(port, () => {
 import  express from 'express';
 import cors from 'cors';
 import routeapi from './routes/routes.js'
+import swaggerUi from 'swagger-ui-express';  // Import swaggerUi
+import swaggerSpec from '../Backend/swaggerconfig.js'
+import bodyParser from 'body-parser';
 const port = 3000;
 const app=express();
 app.use(cors());
+app.use(cors());
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 app.use(routeapi);

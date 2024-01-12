@@ -1,11 +1,69 @@
-
-
-<div *ngIf="istableView; else cardview"   class="table-view" #tableView>
-  <div class="d-flex align-items-end flex-column">
-  <button  (click)="gridView()">card View</button>
+<div class="d-flex justify-content-center align-items-center">
+  <input type="file" (change)="showChange($event)" /><button
+    class="btn btn-primary"
+  >
+    Upload
+  </button>
+  <div >
+  <button  (click)="registerEmployee()" class="btn btn-primary m-5" >Add Employee</button>
 </div>
-<table class="table table-striped">
-    <tr   >
+</div>
+
+<ng-template  [ngIf]="isformOpen" >
+  <div class="container mt-5" >
+    <form>
+        <div class="form-group">
+            <label for="employeeFirstName">Employee First Name</label>
+            <input type="text" class="form-control" id="employeeFirstName" placeholder="Enter First Name">
+        </div>
+        <div class="form-group">
+            <label for="employeeMiddleName">Employee Middle Name</label>
+            <input type="text" class="form-control" id="employeeMiddleName" placeholder="Enter Middle Name">
+        </div>
+        <div class="form-group">
+            <label for="employeeLastName">Employee Last Name</label>
+            <input type="text" class="form-control" id="employeeLastName" placeholder="Enter Last Name">
+        </div>
+        <div class="form-group">
+            <label for="employeeID">Employee ID</label>
+            <input type="text" class="form-control" id="employeeID" placeholder="Enter Employee ID">
+        </div>
+        <div class="form-group">
+            <label for="emailID">E-Mail ID</label>
+            <input type="text" class="form-control" id="emailID" placeholder="Enter E-Mail ID">
+        </div>
+        <div class="form-group">
+            <label for="phoneNo">Phone No.</label>
+            <input type="text" class="form-control" id="phoneNo" placeholder="Enter Phone No.">
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" class="form-control" id="designation" placeholder="Enter Designation">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" placeholder="Enter Status">
+        </div>
+        <div class="form-group">
+            <label for="dob">Date Of Birth</label>
+            <input type="text" class="form-control" id="dob" placeholder="Enter Date Of Birth">
+        </div>
+        <div class="form-group">
+            <label for="joiningDate">Date of Joining</label>
+            <input type="text" class="form-control" id="joiningDate" placeholder="Enter Date of Joining">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</ng-template>
+
+
+<div *ngIf="istableView; else cardview" class="table-view" #tableView>
+  <div class="d-flex align-items-end flex-column">
+    <button (click)="gridView()">card View</button>
+  </div>
+  <table class="table table-striped">
+    <tr>
       <th scope="col">#</th>
       <th scope="col">First Name</th>
       <th scope="col">Middle Name</th>
@@ -16,39 +74,41 @@
       <th scope="col">Date of Joining</th>
     </tr>
     <tr *ngFor="let employee of empoloyees">
-      <td scope="row" >{{employee.employeeid}}</td>
-     
-     <td >{{employee.employee_fnam}}</td>
-     <td >{{employee.employee_mname}}</td>
-      <td >{{employee.employee_lname}}</td>
-      <td >{{employee.employee_lname}}</td> 
-      <td >{{employee.email}}</td>
-      <td >{{employee.designation}}</td>
-      <td >{{employee.emp_joining_date|date}}</td>
-     
+      <td scope="row">{{ employee.employeeid }}</td>
 
+      <td>{{ employee.employee_fnam }}</td>
+      <td>{{ employee.employee_mname }}</td>
+      <td>{{ employee.employee_lname }}</td>
+      <td>{{ employee.employee_lname }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.designation }}</td>
+      <td>{{ employee.emp_joining_date | date }}</td>
     </tr>
 
-      
-     
-   
-    <tr>
-    
-      </tr>
+    <tr></tr>
   </table>
 </div>
 
 <ng-template #cardview>
   <div class="d-flex align-items-end flex-column">
-  <button (click)="tableView()">Table  View</button>
+    <button (click)="tableView()">Table View</button>
   </div>
-  <div class="card" style="width: 18rem;" *ngFor="let employee of empoloyees">
-    <img class="card-img-top" src="../../../../assets/employee.jpg" alt="Card image cap">
+  <div class="card" style="width: 18rem" *ngFor="let employee of empoloyees">
+    <img
+      class="card-img-top"
+      src="../../../../assets/employee.jpg"
+      alt="Card image cap"
+    />
     <div class="card-body">
-      <p class="card-text">{{employee.employee_fnam}} {{employee.employee_mname}} {{employee.employee_lname}} </p>
-      <p class="card-text">{{employee.designation}}</p>
-      <p class="card-text">{{employee.email}}</p>
-      <p class="card-text">Joining Date : {{employee.emp_joining_date|date}}</p>
+      <p class="card-text">
+        {{ employee.employee_fnam }} {{ employee.employee_mname }}
+        {{ employee.employee_lname }}
+      </p>
+      <p class="card-text">{{ employee.designation }}</p>
+      <p class="card-text">{{ employee.email }}</p>
+      <p class="card-text">
+        Joining Date : {{ employee.emp_joining_date | date }}
+      </p>
     </div>
   </div>
 </ng-template>

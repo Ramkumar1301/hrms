@@ -8,6 +8,7 @@ export interface employee {
      status :string,
     Photo :string,
     empdob :Date,
-    emp_joining_date:Date
+    emp_joining_date:Date,
+    phoneno:number
     // Add other properties as needed
   }

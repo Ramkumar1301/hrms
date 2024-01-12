@@ -8,10 +8,13 @@ import { employee } from './employee';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent  implements OnInit {
+ 
   title(title: any) {
     throw new Error('Method not implemented.');
   }
   istableView : boolean=true
+  isformOpen: boolean=false
+  
   empoloyees: employee[] = []; // Initialize users as an array of User
  /*
   user: User = {
@@ -51,6 +54,20 @@ export class EmployeeComponent  implements OnInit {
   }
 tableView(){
     this.istableView=true;
+  }
+registerEmployee(){
+  this.isformOpen=!this.isformOpen;
+ 
+ 
+  console.log(this.isformOpen)
+}
+  
+  showChange(event:any){
+    const data =event.target.files[0];
+    console.log(data)
+    console.log("fileUploaded")
+
+
   }
 
 }
