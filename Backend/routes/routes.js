@@ -27,13 +27,13 @@ route.get('/api/employeedetails',async (req, res) => {
 connectToDatabase();
 
 route.post('/api/employeedeta',async (req,res)=>{
-    const{  detailid, employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno} = req.body;
+    const{  employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno} = req.body;
     
     try {
         const queryText = 
-        'INSERT INTO public.employeedetails (detailid, employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno) VALUES ($1, $2, $3, $4, $5, $6,$7,$8,$9,$10,$11,$12) RETURNING *';
+        'INSERT INTO public.employeedetails ( employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno) VALUES ($1, $2, $3, $4, $5, $6,$7,$8,$9,$10,$11) RETURNING *';
         const values = [
-            detailid, employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno
+            employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno
         ];
     
         const result = await client.query(queryText, values);

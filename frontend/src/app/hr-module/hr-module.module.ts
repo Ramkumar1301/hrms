@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -27,7 +28,8 @@ import { HrModuleRoutingModule } from './hr-module-routing.module';
   ],
   imports: [
     CommonModule,
-    HrModuleRoutingModule
+    HrModuleRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class HrModuleModule { }

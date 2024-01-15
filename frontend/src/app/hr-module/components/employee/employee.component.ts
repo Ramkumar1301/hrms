@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetadatService } from 'src/app/getadat.service';
 import { employee } from './employee';
+import { FormControl, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee',
@@ -34,7 +36,7 @@ export class EmployeeComponent  implements OnInit {
     });
   } */
 
-    constructor(private getdata:GetadatService){
+    constructor(private getdata:GetadatService,private http: HttpClient){
 
     }
     ngOnInit(): void {
@@ -67,6 +69,36 @@ registerEmployee(){
     console.log(data)
     console.log("fileUploaded")
 
+
+  }
+
+  // FORM SECTION
+  registerForm = new FormGroup({
+   employeeid:new FormControl(),
+   employee_fnam :new FormControl(),
+   employee_lname:new FormControl(),
+   employee_mname :new FormControl(),
+   designation :new FormControl(),
+    email:new FormControl(),
+   status :new FormControl(),
+    empdob:new FormControl(),
+   emp_joining_date :new FormControl(),
+    phoneno:new FormControl(),
+    
+
+  });
+
+  onRegisteration(){
+    const data = this.registerForm.value;
+    console.log(data);
+    const url="http://localhost:3000/api/employeedeta"
+    this.http.post(url,data).subscribe(
+      (response)=>{
+      console.log(response);
+    },
+    (error)=>{
+      console.log('registration fiaoled from front end please check', error);
+    });
 
   }
 
