@@ -4,6 +4,8 @@ import { employee } from './employee';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import * as XLSX from 'xlsx'
+import { InsertdataService } from '../Services/insertdata.service';
 
 @Component({
   selector: 'app-employee',
@@ -37,7 +39,7 @@ export class EmployeeComponent  implements OnInit {
     });
   } */
 
-    constructor(private getdata:GetadatService,private http: HttpClient,private toastr: ToastrService){
+    constructor(private getdata:GetadatService,private http: HttpClient,private toastr: ToastrService ,private insertdataServices:InsertdataService){
 
     }
     ngOnInit(): void {
@@ -65,14 +67,56 @@ registerEmployee(){
   console.log(this.isformOpen)
 }
   
-  showChange(event:any){
-    const data =event.target.files[0];
-    console.log(data)
-    console.log("fileUploaded")
-    
+  
+readExcelFile(file: File) {
+  const fileReader = new FileReader();
 
+  fileReader.onload = (e: any) => {
+    const data = e.target.result;
 
+    if (data) {
+      const workbook = XLSX.read(data, { type: 'binary' });
+
+      // Assuming you want to read the first sheet
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      
+      // Ensure that the worksheet is not undefined
+      if (worksheet) {
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        console.log(jsonData);
+        for (const row of jsonData){
+          this.insertdataServices.insertData(row).subscribe(
+            (response) => {
+              console.log('Data inserted successfully:', response);
+            },
+            (error) => {
+              console.error('Error inserting data:', error);
+            }
+          );
+        }
+      } else {
+        console.error('Worksheet is undefined.');
+      }
+    } else {
+      console.error('File data is undefined.');
+    }
+  };
+
+  fileReader.readAsBinaryString(file);
+}
+
+showChange(event: any) {
+  const file = event.target.files[0];
+
+  if (file) {
+    this.readExcelFile(file);
+  } else {
+    console.error('No file selected.');
   }
+}
+
+
 
   // FORM SECTION
   registerForm = new FormGroup({
@@ -89,6 +133,7 @@ registerEmployee(){
     
 
   });
+
 
   onRegisteration(){
     const data = this.registerForm.value;

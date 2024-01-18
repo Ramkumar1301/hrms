@@ -48,7 +48,42 @@ route.post('/api/employeedeta',async (req,res)=>{
       
     
 );
-
+route.post('/api/insertData', async (req, res) => {
+    // const client = await pool.connect();
+  
+    try {
+      const data = req.body;
+  
+      // Adjust the SQL query based on your table structure
+      const query = `
+        INSERT INTO public.employeedetails (
+          employeeid, employee_fnam, employee_lname, employee_mname, designation, email, 
+          status, photo, empdob, emp_joining_date, phoneno
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
+  
+      await client.query(query, [
+        data.employeeid,
+        data.employee_fnam,
+        data.employee_lname,
+        data.employee_mname,
+        data.designation,
+        data.email,
+        data.status,
+        data.photo,
+        data.empdob,
+        data.emp_joining_date,
+        data.phoneno,
+      ]);
+  
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.error('Error inserting data into the database:', error);
+      res.status(500).json({ success: false, error: 'Internal server error' });
+    } finally {
+      client.release();
+    }
+  });
+  
 
 process.on('SIGINT', async () => {
     await closeDatabaseConnection();
