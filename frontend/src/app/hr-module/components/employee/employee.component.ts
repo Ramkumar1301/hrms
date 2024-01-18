@@ -68,6 +68,7 @@ registerEmployee(){
     const data =event.target.files[0];
     console.log(data)
     console.log("fileUploaded")
+    
 
 
   }
