@@ -14,6 +14,7 @@ import { HrModuleRoutingModule } from './hr-module-routing.module';
 
 
 
+
 @NgModule({
   declarations: [
    
@@ -24,12 +25,16 @@ import { HrModuleRoutingModule } from './hr-module-routing.module';
     LeaveComponent,
     EventComponent,
     BirthdayComponent,
-    NotificationComponent
+    NotificationComponent,
+
+
   ],
   imports: [
     CommonModule,
     HrModuleRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
+   
   ]
 })
 export class HrModuleModule { }

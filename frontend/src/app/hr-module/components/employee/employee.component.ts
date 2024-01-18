@@ -3,6 +3,7 @@ import { GetadatService } from 'src/app/getadat.service';
 import { employee } from './employee';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -36,7 +37,7 @@ export class EmployeeComponent  implements OnInit {
     });
   } */
 
-    constructor(private getdata:GetadatService,private http: HttpClient){
+    constructor(private getdata:GetadatService,private http: HttpClient,private toastr: ToastrService){
 
     }
     ngOnInit(): void {
@@ -95,6 +96,11 @@ registerEmployee(){
     this.http.post(url,data).subscribe(
       (response)=>{
       console.log(response);
+      this.toastr.success('Employee Register Successful');
+      this.registerForm.reset({
+        
+      });
+      this.isformOpen=false;
     },
     (error)=>{
       console.log('registration fiaoled from front end please check', error);
