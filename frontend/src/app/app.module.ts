@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +10,7 @@ import { TimepassComponent } from './timepass/timepass.component';
 import { RegisterUserComponent } from './component/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HrModuleModule } from './hr-module/hr-module.module';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,11 +18,14 @@ import { HrModuleModule } from './hr-module/hr-module.module';
     RegisterUserComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    HrModuleModule
+    HrModuleModule ,
+     BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
