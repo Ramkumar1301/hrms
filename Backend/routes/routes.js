@@ -2,7 +2,8 @@ import { Router } from "express";
 import getData from '../queries/viewdata.js';
 import getUsers from "../queries/viewdata.js";
 
-
+import pkg from 'pg';
+const { Client } = pkg;
 import { client, connectToDatabase, closeDatabaseConnection } from "../connection.js"
 
 const route =Router();
@@ -48,8 +49,9 @@ route.post('/api/employeedeta',async (req,res)=>{
       
     
 );
+/* connectToDatabase(); */
 route.post('/api/insertData', async (req, res) => {
-    // const client = await pool.connect();
+    /*  const client = await Client.connect(); */
   
     try {
       const data = req.body;
@@ -80,7 +82,7 @@ route.post('/api/insertData', async (req, res) => {
       console.error('Error inserting data into the database:', error);
       res.status(500).json({ success: false, error: 'Internal server error' });
     } finally {
-      client.release();
+      // client.release();
     }
   });
   
