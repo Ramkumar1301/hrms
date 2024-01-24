@@ -14,6 +14,7 @@ async function getUsers() {
     try {
         await client.connect();
         const result = await client.query('SELECT * FROM public.employeedetails');
+        console.log(result)
         return result.rows;
     } catch (err) {
         console.error('Error fetching users:', err);
