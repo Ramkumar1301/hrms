@@ -88,20 +88,24 @@ route.post('/api/insertData', async (req, res) => {
   
 route.post('/api/eventdetail',async (req,res)=>{
   const {event_name, event_date, event_description, event_incharge, event_status}=req.body;
+  const defaultStatus = 'upcoming';
+  const statusToInsert = event_status || defaultStatus;
+  console.log(req.body)
   try{
-    const queryText=`INSERT INTO  public."Eventdetails" (event_name, event_date, event_description, event_incharge, event_status)
-    VALUES
-        ($1,$2,$3,$4,$5)`
-    const values=[event_name, event_date, event_description, event_incharge, event_status];
-    const result = await client.query(queryText, values);
+    const queryText1=
+    'INSERT INTO  public."Eventdetails" (event_name, event_date, event_description, event_incharge, event_status) VALUES ($1,$2,$3,$4,$5)RETURNING *'
+    const values=[event_name, event_date, event_description, event_incharge, statusToInsert];
+    const result = await client.query(queryText1, values);
+    result.rows[0]
     res.status(201).json(result)
+    console.log(result)
        
     
 
   }catch(error){
     console.error(error)
   }
-})
+});
 
 process.on('SIGINT', async () => {
     await closeDatabaseConnection();

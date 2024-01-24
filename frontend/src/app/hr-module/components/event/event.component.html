@@ -4,20 +4,24 @@
 <form [formGroup]="eventDetail" (submit)="registerEvent()">
 <div class="form-group">
   <label for="eventName">Event Name</label>
-  <input type="text" class="form-control" id="eventName" formControlName="eventName" placeholder="Enter Event Name "  >
+  <input type="text" class="form-control" id="eventName" formControlName="event_name" placeholder="Enter Event Name "  >
 </div>
 <div class="form-group">
   <label for="eventdate">Event Date</label>
-  <input type="text" class="form-control" id="eventdate" formControlName="eventdate" placeholder="Enter Event date "  >
+  <input type="text" class="form-control" id="eventdate" formControlName="event_date" placeholder="Enter Event date "  >
 </div>
 <div class="form-group">
   <label for="eventDescription">Event Description</label>
-  <input type="text" class="form-control" id="eventDescription" formControlName="eventDescription" placeholder="Event  Description "  >
+  <input type="text" class="form-control" id="eventDescription" formControlName="event_description" placeholder="Event  Description "  >
 </div>
 <div class="form-group">
   <label for="eventIncharge">Event Incharge</label>
-  <input type="text" class="form-control" id="eventIncharge" formControlName="eventIncharge" placeholder="Enter Event Name "  >
+  <input type="text" class="form-control" id="eventIncharge" formControlName="event_incharge" placeholder="Enter Event Name "  >
 </div>
+<!-- <div class="form-group">
+  <label for="eventIncharge">Event staus</label>
+  <input type="text" class="form-control" id="eventIncharge" formControlName="event_status" placeholder="Enter Event Name "  >
+</div> -->
 <div>
   <button class=" btn btn-primary ">Add Event </button>
 </div>

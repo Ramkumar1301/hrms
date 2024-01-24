@@ -20,10 +20,11 @@ eventdetails:Eventdetail[]=[];
     throw new Error('Method not implemented.');
   }
  eventDetail = new FormGroup({
-  eventName:new FormControl(),
-  eventdate:new FormControl(),
-  eventDescription:new FormControl(),
-  eventIncharge:new FormControl(),
+  event_name:new FormControl(),
+  event_date:new FormControl(),
+  event_description:new FormControl(),
+  event_incharge:new FormControl(),
+  
 
  });
 
