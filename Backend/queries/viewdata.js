@@ -1,4 +1,4 @@
-import pkg from 'pg';
+/* import pkg from 'pg';
 
 const { Client } = pkg;
 
@@ -22,6 +22,7 @@ async function getUsers() {
     } finally {
         await client.end();
     }
-} 1
+} 
 
 export default getUsers;
+; */

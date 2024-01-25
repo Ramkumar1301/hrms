@@ -1,7 +1,7 @@
 import { Router } from "express";
-import getData from '../queries/viewdata.js';
-import getUsers from "../queries/viewdata.js";
 
+/* import getUsers from "../queries/viewdata.js"; */
+import {getEvent, getUsers} from '../controller/controller.js'
 import pkg from 'pg';
 const { Client } = pkg;
 import { client, connectToDatabase, closeDatabaseConnection } from "../connection.js"
@@ -15,7 +15,7 @@ route.get('/api/routecheck',(req,res,)=>{
 })
 
 
-
+//Employee Data Details
 route.get('/api/employeedetails',async (req, res) => {
     try {
         const userData = await getUsers(); // Retrieve user data
@@ -25,6 +25,16 @@ route.get('/api/employeedetails',async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+//Event Data Details
+route.get('/api/eventdetail',async(req,res)=>{
+  try{
+    const eventData =await getEvent();
+    res.json(eventData);
+  }catch(err){
+    console.log('error handling event',err);
+    res.status(500).send('Internal Server Error');
+  }
+})
 connectToDatabase();
 
 route.post('/api/employeedeta',async (req,res)=>{

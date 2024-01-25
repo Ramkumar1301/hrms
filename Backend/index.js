@@ -72,4 +72,15 @@ app.get('/',(req,res)=>{
 
 app.listen(port, ()=>{
   console.log(`THE SERVER IS RUNNING IN ${port}`)
+
 })
+process.on('SIGINT', async () => {
+  try {
+      await closeDatabaseConnection();
+      console.log('Database connection closed.');
+      process.exit(0);
+  } catch (error) {
+      console.error('Error closing database connection:', error);
+      process.exit(1);
+  }
+});
