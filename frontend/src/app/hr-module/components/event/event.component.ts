@@ -19,6 +19,7 @@ eventdetails:Eventdetail[]=[];
   ){}
   ngOnInit(): void {
     this.getdata()
+    this.registerEvent()
   
     throw new Error('Method not implemented.');
   }

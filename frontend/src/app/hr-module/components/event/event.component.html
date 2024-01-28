@@ -18,12 +18,27 @@
   <label for="eventIncharge">Event Incharge</label>
   <input type="text" class="form-control" id="eventIncharge" formControlName="event_incharge" placeholder="Enter Event Name "  >
 </div>
+  
+</form>
 <!-- <div class="form-group">
   <label for="eventIncharge">Event staus</label>
   <input type="text" class="form-control" id="eventIncharge" formControlName="event_status" placeholder="Enter Event Name "  >
 </div> -->
 <div>
+
   <button class=" btn btn-primary ">Add Event </button>
+</div>
+<div *ngFor="let eventdetail of eventdetails">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{eventdetail.event_name}}</h5>
+        <p class="card-text">{{eventdetail.event_description}}</p>
+        <a href="#" class="btn btn-primary">{{eventdetail.event_incharge}}</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -33,13 +48,7 @@
 
 
 
-Event  Name 
-Event Date 
-Description
-Event Incharge 
-consider timing 
 
 
-</form>
 
 </div>
