@@ -14,14 +14,20 @@ import { GetadatService } from 'src/app/getadat.service';
 export class EventComponent implements OnInit {
 
 eventdetails:Eventdetail[]=[];
+iseventFormOpen: boolean =false;
  constructor(private formbuider :FormBuilder, private http:HttpClient,private toastr: ToastrService
   , private dataService  : GetadatService
   ){}
+
+  
   ngOnInit(): void {
     this.getdata()
-    this.registerEvent()
+   
   
-    throw new Error('Method not implemented.');
+   /*  throw new Error('Method not implemented.'); */
+  }
+  showform(){
+    this.iseventFormOpen=!this.iseventFormOpen
   }
  eventDetail = new FormGroup({
   event_name:new FormControl(),
@@ -37,7 +43,7 @@ eventdetails:Eventdetail[]=[];
       this.eventdetails=response
       console.log(response)
     }
-  )
+  );
 
   
  }
@@ -46,13 +52,19 @@ eventdetails:Eventdetail[]=[];
 
 
   registerEvent(){
+    console.log("tryiong to add data")
     const data =this.eventDetail.value;
     console.log(data);
-    const url ="http://localhost:3000/api/eventdetail";
-    this.http.post(url,data).subscribe(
+    const eventurl ="http://localhost:3000/api/eventdetail";
+    this.http.post(eventurl,data).subscribe(
       (response)=>{
         console.log(response);
+
         this.toastr.success("event added succesfully")
+        this.eventDetail.reset({
+        
+        });
+        this.iseventFormOpen=false;
       },
       (error)=>{
         console.log('event detailes unable to add from front end please Checkj',error)

@@ -98,10 +98,12 @@ route.post('/api/insertData', async (req, res) => {
   
 route.post('/api/eventdetail',async (req,res)=>{
   const {event_name, event_date, event_description, event_incharge, event_status}=req.body;
+  console.log(req.body)
   const defaultStatus = 'upcoming';
   const statusToInsert = event_status || defaultStatus;
   console.log(req.body)
   try{
+    
     const queryText1=
     'INSERT INTO  public."Eventdetails" (event_name, event_date, event_description, event_incharge, event_status) VALUES ($1,$2,$3,$4,$5)RETURNING *'
     const values=[event_name, event_date, event_description, event_incharge, statusToInsert];

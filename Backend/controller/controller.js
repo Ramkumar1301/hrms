@@ -11,7 +11,7 @@ export async function getUsers() {
         console.error('Error fetching users:', error);
         throw error;
     } finally {
-        await closeDatabaseConnection();
+        /* await closeDatabaseConnection(); */
     }
 }
 
@@ -25,6 +25,6 @@ export async function getEvent() {
         console.error('Error fetching events:', error);
         throw error;
     } finally {
-        await closeDatabaseConnection();
+      /*   await closeDatabaseConnection(); */
     }
 }

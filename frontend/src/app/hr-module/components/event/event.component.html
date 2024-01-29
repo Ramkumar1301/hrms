@@ -1,4 +1,7 @@
-<button class="btn btn-primary">Add Event</button>
+<div class="d-flex justify-content-end">
+<button class="btn btn-primary " (click)="showform()" >Add Event</button>
+</div>
+<ng-template [ngIf]="iseventFormOpen">
 <div class="form-wrapper">
     
 <form [formGroup]="eventDetail" (submit)="registerEvent()">
@@ -18,26 +21,22 @@
   <label for="eventIncharge">Event Incharge</label>
   <input type="text" class="form-control" id="eventIncharge" formControlName="event_incharge" placeholder="Enter Event Name "  >
 </div>
-  
-</form>
-<!-- <div class="form-group">
-  <label for="eventIncharge">Event staus</label>
-  <input type="text" class="form-control" id="eventIncharge" formControlName="event_status" placeholder="Enter Event Name "  >
-</div> -->
 <div>
 
-  <button class=" btn btn-primary ">Add Event </button>
+  <button class=" btn btn-primary " type="submit">Add Event </button>
 </div>
-<div *ngFor="let eventdetail of eventdetails">
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{eventdetail.event_name}}</h5>
-        <p class="card-text">{{eventdetail.event_description}}</p>
-        <a href="#" class="btn btn-primary">{{eventdetail.event_incharge}}</a>
-      </div>
-    </div>
+</form>
+</div>
+</ng-template>
+<div class="d-flex flex-row flex-wrap justify-content-between">
+  <div *ngFor="let eventdetail of eventdetails" class="col-sm-6">
+     <div class="card">
+        <div class="card-body">
+           <h5 class="card-title">{{eventdetail.event_name}}</h5>
+           <p class="card-text">{{eventdetail.event_description}}</p>
+           <a href="#" class="btn btn-primary">{{eventdetail.event_incharge}}</a>
+        </div>
+     </div>
   </div>
 </div>
 
@@ -51,4 +50,3 @@
 
 
 
-</div>
