@@ -1,1 +1,28 @@
-<p>birthday works!</p>
+<h1>Upcoming BirthDay List 🎂🎂</h1>
+
+<div><table class="table table-striped">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Middle Name</th>
+      
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+ 
+      <th scope="col">Date of Birth</th>
+    </tr>
+    <tr *ngFor="let employee of birthday">
+      <td scope="row">{{ employee.employeeid }}</td>
+
+      <td>{{ employee.employee_fnam }}</td>
+      <td>{{ employee.employee_mname }}</td>
+      <td>{{ employee.employee_lname }}</td>
+      
+      <td>{{ employee.email }}</td>
+     
+      <td>{{ employee.empdob | date }}</td>
+    </tr>
+
+    <tr></tr>
+  </table>
+</div>

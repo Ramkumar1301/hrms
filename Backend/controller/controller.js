@@ -28,3 +28,18 @@ export async function getEvent() {
       /*   await closeDatabaseConnection(); */
     }
 }
+
+export async function getBirthday(){
+   
+    try {
+        await connectToDatabase();
+        const result = await client.query('SELECT * FROM public.employeedetails ORDER BY empdob ASC');
+        console.log(result);
+        return result.rows;
+    } catch (error) {
+        console.error('Error fetching events:', error);
+        throw error;
+    } finally {
+      /*   await closeDatabaseConnection(); */
+    }
+}

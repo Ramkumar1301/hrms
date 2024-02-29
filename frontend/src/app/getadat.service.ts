@@ -8,6 +8,8 @@ export class GetadatService {
 
   private url='http://localhost:3000/api/employeedetails'
   private eventUrl='http://localhost:3000/api/eventdetail'
+  private BirthdayUrl='http://localhost:3000/api/birthday'
+
   constructor(private http : HttpClient) { }
 
   
@@ -16,6 +18,10 @@ export class GetadatService {
   }
   getEventDetail():Observable<any[]>{
     return this.http.get<any[]>(this.eventUrl)
+  }
+  getBirthDay():Observable<any[]>{
+    return this.http.get<any[]>(this.BirthdayUrl)
+
   }
 
 

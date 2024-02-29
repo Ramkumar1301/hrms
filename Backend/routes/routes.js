@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 /* import getUsers from "../queries/viewdata.js"; */
-import {getEvent, getUsers} from '../controller/controller.js'
+import {getEvent, getUsers,getBirthday} from '../controller/controller.js'
 import pkg from 'pg';
 const { Client } = pkg;
 import { client, connectToDatabase, closeDatabaseConnection } from "../connection.js"
@@ -35,6 +35,23 @@ route.get('/api/eventdetail',async(req,res)=>{
     res.status(500).send('Internal Server Error');
   }
 })
+ 
+route.get('/api/birthday',async(req,res)=>{
+ try {
+  const birthday =await getBirthday();
+    res.json(birthday);
+ }catch(err){
+  console.log('Error Handling Event ',err);
+  res.status(500).send('Internal Server Error');
+
+ }
+})
+
+
+
+
+
+
 connectToDatabase();
 
 route.post('/api/employeedeta',async (req,res)=>{
