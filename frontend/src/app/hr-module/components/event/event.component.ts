@@ -52,7 +52,7 @@ iseventFormOpen: boolean =false;
 
 
   registerEvent(){
-    console.log("tryiong to add data")
+    console.log("trying to add data")
     const data =this.eventDetail.value;
     console.log(data);
     const eventurl ="http://localhost:3000/api/eventdetail";
@@ -67,7 +67,7 @@ iseventFormOpen: boolean =false;
         this.iseventFormOpen=false;
       },
       (error)=>{
-        console.log('event detailes unable to add from front end please Checkj',error)
+        console.log('event detailes unable to add from front end please Check',error)
       })
   }
 
