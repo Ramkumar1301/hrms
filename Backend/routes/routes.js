@@ -54,7 +54,7 @@ route.get('/api/birthday',async(req,res)=>{
 
 connectToDatabase();
 
-route.post('/api/employeedeta',async (req,res)=>{
+route.post('/api/employeedata',async (req,res)=>{
     const{  employeeid, employee_fnam, employee_lname, employee_mname, designation, email, status, photo, empdob, emp_joining_date, phoneno} = req.body;
     
     try {

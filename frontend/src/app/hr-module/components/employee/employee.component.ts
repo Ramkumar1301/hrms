@@ -39,7 +39,8 @@ export class EmployeeComponent  implements OnInit {
     });
   } */
 
-    constructor(private getdata:GetadatService,private http: HttpClient,private toastr: ToastrService ,private insertdataServices:InsertdataService){
+    constructor(private getdata:GetadatService,
+      private insertemployee: InsertdataService,private http: HttpClient,private toastr: ToastrService ,private insertdataServices:InsertdataService){
 
     }
     ngOnInit(): void {
@@ -134,8 +135,20 @@ showChange(event: any) {
 
   });
 
+ 
+   onRegisteration(){
+    //  console.log(this.registerForm.value);
+     this.insertemployee.insertEmpolyeeData(this.registerForm.value).subscribe(
+      (response)=>{
+      console.log("service started sucessfully ",response);
+     })
+     this.toastr.success('Employee Register Successful');
+     this.isformOpen=false;
+     
+   }
 
-  onRegisteration(){
+
+/*   onRegisteration(){
     const data = this.registerForm.value;
     console.log(data);
     const url="http://localhost:3000/api/employeedeta"
@@ -152,6 +165,6 @@ showChange(event: any) {
       console.log('registration fiaoled from front end please check', error);
     });
 
-  }
+  } */
 
 }

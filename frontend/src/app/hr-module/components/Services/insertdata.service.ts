@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class InsertdataService {
   private APIURL = "http://localhost:3000/api/insertData"
+  private ADDEMPLOYEEURL ="http://localhost:3000/api/employeedata"
 
   constructor(private http:HttpClient) { }
    
   insertData(data:any):Observable<any>{
     return this.http.post<any>(this.APIURL,data)
 
+  }
+  insertEmpolyeeData(data:any):Observable<any>{
+    return this.http.post<any>(this.ADDEMPLOYEEURL,data)
   }
 
 
